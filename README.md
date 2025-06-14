@@ -1,2 +1,13 @@
-# demo.js
-an abstraction for your demo react component, which you put in your landing pages
+## Task List
+
+### Done
+- [x] Basic demo
+
+### To Do
+- [ ] Dedicated demo for cursors
+- [ ] Configurable demo
+- [ ] Configurable cursor
+- [ ] Mac cursor
+- [ ] Automatic scrolling
+- [ ] Stop scrolling at
+
