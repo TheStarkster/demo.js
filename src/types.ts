@@ -11,6 +11,7 @@ export interface ScrollAction {
   amount: number | string; // pixels or percentage
   speed?: number; // pixels per second
   delay?: number; // delay before action in ms
+  target?: string; // CSS selector or ID
 }
 
 export interface DemoStep {

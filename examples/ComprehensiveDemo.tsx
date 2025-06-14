@@ -261,6 +261,7 @@ const ComprehensiveDemo: React.FC = () => {
         amount: '60%',
         speed: 400,
         delay: 1000,
+        target: '#scrolled-content',
       },
       fadeIn: true,
     }),
