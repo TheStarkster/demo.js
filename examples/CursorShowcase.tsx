@@ -20,7 +20,7 @@ const buttonStyle: React.CSSProperties = {
   padding: '6px 10px',
   borderRadius: '4px',
   border: '1px solid #ccc',
-  background: '#f5f5f5',
+  background: 'purple',
   cursor: 'pointer'
 };
 
@@ -65,7 +65,6 @@ const CursorShowcase: React.FC = () => {
   return (
     <DemoProvider
       steps={[]}
-      clickInactiveColor="#e0e0e0"
       clickActiveColor="#4caf50"
     >
       <div style={{ display: 'grid', gap: '20px', gridTemplateColumns: 'repeat(auto-fit, minmax(160px, 1fr))', padding: '20px' }}>
