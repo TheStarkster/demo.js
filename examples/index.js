@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { createRoot } from 'react-dom/client';
 import ComprehensiveDemo from './ComprehensiveDemo';
 import CursorShowcase from './CursorShowcase';
+import BrowserDemo from './BrowserDemo';
 
 const tabButton = (active) => ({
   padding: '8px 16px',
@@ -19,8 +20,11 @@ const App = () => {
       <div style={{ display: 'flex', gap: '10px', borderBottom: '1px solid #ddd', marginBottom: '20px' }}>
         <button style={tabButton(tab === 'demo')} onClick={() => setTab('demo')}>Comprehensive Demo</button>
         <button style={tabButton(tab === 'cursors')} onClick={() => setTab('cursors')}>Cursor Showcase</button>
+        <button style={tabButton(tab === 'browser')} onClick={() => setTab('browser')}>Browser Demo</button>
       </div>
-      {tab === 'demo' ? <ComprehensiveDemo /> : <CursorShowcase />}
+      {tab === 'demo' && <ComprehensiveDemo />}
+      {tab === 'cursors' && <CursorShowcase />}
+      {tab === 'browser' && <BrowserDemo />}
     </div>
   );
 };
