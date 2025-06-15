@@ -63,7 +63,11 @@ const CursorPreview: React.FC<{ variant: CursorVariant }> = ({ variant }) => {
 
 const CursorShowcase: React.FC = () => {
   return (
-    <DemoProvider steps={[]}>
+    <DemoProvider
+      steps={[]}
+      clickInactiveColor="#e0e0e0"
+      clickActiveColor="#4caf50"
+    >
       <div style={{ display: 'grid', gap: '20px', gridTemplateColumns: 'repeat(auto-fit, minmax(160px, 1fr))', padding: '20px' }}>
         {variants.map(v => (
           <CursorPreview key={v} variant={v} />

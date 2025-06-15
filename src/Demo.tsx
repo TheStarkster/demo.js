@@ -145,6 +145,8 @@ export const Demo: React.FC<DemoProps> = ({
   defaultFadeOutDuration = DEFAULT_FADE_OUT_DURATION,
   defaultFadeInEasing,
   defaultFadeOutEasing,
+  visualClickInactiveColor,
+  visualClickActiveColor,
   onStepComplete,
   onComplete,
 }) => {
@@ -153,6 +155,8 @@ export const Demo: React.FC<DemoProps> = ({
         steps={steps}
         autoPlay={autoPlay}
         loop={loop}
+        clickInactiveColor={visualClickInactiveColor}
+        clickActiveColor={visualClickActiveColor}
         onStepComplete={onStepComplete}
         onComplete={onComplete}
       >

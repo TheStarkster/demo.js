@@ -37,6 +37,9 @@ export interface DemoProps {
   cursorSize?: number;
   cursorColor?: string;
   cursorVariant?: string; // Type of cursor to display
+  // Colors for visual feedback clicking
+  visualClickInactiveColor?: string;
+  visualClickActiveColor?: string;
   defaultTransitionDirection?: 'x' | 'y'; // default direction for all steps
   defaultEasing?: (t: number) => number; // default easing function for all steps
   defaultFadeInDuration?: number; // default fade in duration for all steps
