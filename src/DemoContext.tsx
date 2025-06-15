@@ -7,6 +7,10 @@ interface DemoProviderProps {
   steps: DemoStep[];
   autoPlay?: boolean;
   loop?: boolean;
+  /** Color of a button when not clicked during visual feedback */
+  clickInactiveColor?: string;
+  /** Color of a button while it is being clicked */
+  clickActiveColor?: string;
   onStepComplete?: (stepId: string) => void;
   onComplete?: () => void;
   children: React.ReactNode;
@@ -33,6 +37,8 @@ export const DemoProvider: React.FC<DemoProviderProps> = ({
   steps,
   autoPlay = false,
   loop = false,
+  clickInactiveColor = '#f5f5f5',
+  clickActiveColor = '#357ae8',
   onStepComplete,
   onComplete,
   children,
@@ -241,8 +247,19 @@ export const DemoProvider: React.FC<DemoProviderProps> = ({
               const originalBg = element.style.backgroundColor;
               const originalTransform = element.style.transform;
               
-              // Apply pressed effect
-              element.style.backgroundColor = 'var(--button-active-bg, #357ae8)';
+              // Ensure a base color when not clicked
+              if (!element.style.backgroundColor) {
+                element.style.backgroundColor = clickInactiveColor;
+                applyElementModification({
+                  selector,
+                  type: 'style',
+                  name: 'backgroundColor',
+                  value: clickInactiveColor
+                }, element);
+              }
+
+              // Apply pressed effect with provided active color
+              element.style.backgroundColor = clickActiveColor;
               element.style.transform = 'scale(0.98)';
               
               // Store the visual changes
@@ -250,7 +267,7 @@ export const DemoProvider: React.FC<DemoProviderProps> = ({
                 selector,
                 type: 'style',
                 name: 'backgroundColor',
-                value: 'var(--button-active-bg, #357ae8)'
+                value: clickActiveColor
               }, element);
               
               applyElementModification({
@@ -265,7 +282,7 @@ export const DemoProvider: React.FC<DemoProviderProps> = ({
                 if (originalBg) {
                   element.style.backgroundColor = originalBg;
                 } else {
-                  element.style.removeProperty('background-color');
+                  element.style.backgroundColor = clickInactiveColor;
                 }
                 
                 if (originalTransform) {
@@ -299,7 +316,7 @@ export const DemoProvider: React.FC<DemoProviderProps> = ({
         resolve(false);
       }
     });
-  }, [findElement, applyElementModification]);
+  }, [findElement, applyElementModification, clickInactiveColor, clickActiveColor]);
 
   // Handle state changes for elements (expanded, collapsed, etc.)
   const handleElementState = useCallback((selector: string, stateName: string, stateValue: boolean): Promise<boolean> => {
