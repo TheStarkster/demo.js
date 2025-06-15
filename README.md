@@ -2,9 +2,9 @@
 
 ### Done
 - [x] Basic demo
+- [x] Dedicated demo for cursors
 
 ### To Do
-- [ ] Dedicated demo for cursors
 - [ ] Configurable demo
 - [ ] Configurable cursor
 - [ ] Mac cursor
