@@ -10,4 +10,4 @@
 - [ ] Mac cursor
 - [ ] Automatic scrolling
 - [ ] Stop scrolling at
-- [ ] Mock Browser Window
+- [x] Mock Browser Window
