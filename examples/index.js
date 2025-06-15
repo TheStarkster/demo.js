@@ -10,7 +10,8 @@ const tabButton = (active) => ({
   borderBottom: active ? '2px solid #3498db' : '2px solid transparent',
   background: 'transparent',
   cursor: 'pointer',
-  fontWeight: active ? 'bold' : 'normal'
+  fontWeight: active ? 'bold' : 'normal',
+  color: 'black'
 });
 
 const App = () => {
