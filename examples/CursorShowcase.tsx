@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { CursorWrapper, CursorVariant } from '../src';
+import { DemoProvider } from '../src/DemoContext';
 
 const variants: CursorVariant[] = ['default', 'dot', 'arrow', 'circle', 'pointer'];
 
@@ -62,11 +63,13 @@ const CursorPreview: React.FC<{ variant: CursorVariant }> = ({ variant }) => {
 
 const CursorShowcase: React.FC = () => {
   return (
-    <div style={{ display: 'grid', gap: '20px', gridTemplateColumns: 'repeat(auto-fit, minmax(160px, 1fr))', padding: '20px' }}>
-      {variants.map(v => (
-        <CursorPreview key={v} variant={v} />
-      ))}
-    </div>
+    <DemoProvider steps={[]}>
+      <div style={{ display: 'grid', gap: '20px', gridTemplateColumns: 'repeat(auto-fit, minmax(160px, 1fr))', padding: '20px' }}>
+        {variants.map(v => (
+          <CursorPreview key={v} variant={v} />
+        ))}
+      </div>
+    </DemoProvider>
   );
 };
 

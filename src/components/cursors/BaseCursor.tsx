@@ -28,7 +28,6 @@ export const BaseCursor: React.FC<BaseCursorComponentProps> = ({
 }) => {
   // Get direct DOM handling functions from context
   const { handleDirectClick, handleElementState } = useDemo();
-  
   // Position and animation states
   const [position, setPosition] = useState({ x: window.innerWidth / 2, y: window.innerHeight / 2 });
   const [isAnimating, setIsAnimating] = useState(false);
