@@ -32,7 +32,8 @@ export const MockBrowser: React.FC<MockBrowserProps> = ({
     border: `1px solid ${theme.borderColor}`,
     borderRadius,
     overflow: 'hidden',
-    margin: isMobileBrowser ? '0 auto' : undefined,
+    marginLeft: isMobileBrowser ? 'auto' : undefined,
+    marginRight: isMobileBrowser ? 'auto' : undefined,
     boxShadow: isMobileBrowser 
       ? '0 4px 20px rgba(0, 0, 0, 0.1)' 
       : '0 2px 10px rgba(0, 0, 0, 0.05)',
