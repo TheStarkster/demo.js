@@ -5,6 +5,8 @@ import { browserThemes } from './themes';
 import { ChromeBrowser } from './components/ChromeBrowser';
 import { SafariBrowser } from './components/SafariBrowser';
 import { IOSSafariBrowser } from './components/IOSSafariBrowser';
+import { FirefoxBrowser } from './components/FirefoxBrowser';
+import { EdgeBrowser } from './components/EdgeBrowser';
 
 export const MockBrowser: React.FC<MockBrowserProps> = ({
   type = 'chrome',
@@ -60,12 +62,10 @@ export const MockBrowser: React.FC<MockBrowserProps> = ({
         return <IOSSafariBrowser {...commonProps} />;
 
       case 'firefox':
-        // Use Chrome styling for Firefox (can be customized later)
-        return <ChromeBrowser {...commonProps} />;
+        return <FirefoxBrowser {...commonProps} />;
 
       case 'edge':
-        // Use Chrome styling for Edge (can be customized later)
-        return <ChromeBrowser {...commonProps} />;
+        return <EdgeBrowser {...commonProps} />;
 
       default:
         return <ChromeBrowser {...commonProps} />;
