@@ -1,12 +1,8 @@
 import React from 'react';
 
 export type BrowserType =
-  | 'chrome'
   | 'safari'
-  | 'firefox'
-  | 'edge'
-  | 'ios-safari'
-  | 'android-chrome';
+  | 'ios-safari';
 
 export interface BrowserDimensions {
   width?: number | string;

@@ -14,6 +14,18 @@ export const SafariBrowser: React.FC<SafariBrowserProps> = ({
   url = 'https://example.com',
   children,
 }) => {
+  // Extract domain name from URL
+  const getDomainName = (url: string): string => {
+    try {
+      const urlObj = new URL(url);
+      return urlObj.hostname;
+    } catch (e) {
+      return url.replace(/^https?:\/\//, '').split('/')[0];
+    }
+  };
+
+  const domainName = getDomainName(url);
+
   return (
     <div style={{ height: '100%', display: 'flex', flexDirection: 'column' }}>
       {/* Header */}
@@ -77,10 +89,13 @@ export const SafariBrowser: React.FC<SafariBrowserProps> = ({
           </div>
         </div>
 
-        {/* Simple URL bar - Safari style */}
+        {/* Spacer */}
+        <div style={{ flex: 1 }} />
+
+        {/* Small address bar - macOS Safari style */}
         <div
           style={{
-            flex: 1,
+            width: '35%',
             height: 22,
             background: theme.background,
             border: `1px solid ${theme.borderColor}`,
@@ -90,13 +105,29 @@ export const SafariBrowser: React.FC<SafariBrowserProps> = ({
             padding: '0 8px',
             fontSize: 12,
             color: theme.textColor,
+            position: 'relative',
+            justifyContent: 'center',
           }}
         >
-          <span style={{ marginRight: 6 }}>🔒</span>
-          <span style={{ overflow: 'hidden', textOverflow: 'ellipsis' }}>
-            {url}
+          <span style={{ marginRight: 6, fontSize: 10 }}>🔒</span>
+          <span style={{ fontWeight: 500 }}>
+            {domainName}
           </span>
+          
+          {/* Reload button */}
+          <div style={{ 
+            position: 'absolute', 
+            right: 6, 
+            cursor: 'pointer', 
+            fontSize: 12,
+            color: '#888'
+          }}>
+            ↻
+          </div>
         </div>
+
+        {/* Spacer */}
+        <div style={{ flex: 1 }} />
       </div>
 
       {/* Content */}

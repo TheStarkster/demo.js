@@ -14,60 +14,79 @@ export const IOSSafariBrowser: React.FC<IOSSafariBrowserProps> = ({
   url = 'https://example.com',
   children,
 }) => {
+  // Extract domain name from URL
+  const getDomainName = (url: string): string => {
+    try {
+      const urlObj = new URL(url);
+      return urlObj.hostname;
+    } catch (e) {
+      return url.replace(/^https?:\/\//, '').split('/')[0];
+    }
+  };
+
+  const domainName = getDomainName(url);
+
   return (
     <div style={{ height: '100%', display: 'flex', flexDirection: 'column' }}>
-      {/* Simple status bar */}
+      {/* iOS Status bar */}
       <div
         style={{
-          height: 20,
+          height: 44,
           background: theme.headerBackground,
           display: 'flex',
           alignItems: 'center',
-          justifyContent: 'center',
+          justifyContent: 'space-between',
+          padding: '0 16px',
           fontSize: 12,
           fontWeight: 600,
           color: theme.textColor,
         }}
       >
-        9:41 AM
+        <div>9:41</div>
+        <div style={{ display: 'flex', gap: 5, alignItems: 'center' }}>
+          <div>📶</div>
+          <div>📡</div>
+          <div>🔋</div>
+        </div>
       </div>
 
       {/* Header with URL bar */}
       <div
         style={{
-          height: headerHeight - 20,
+          height: headerHeight,
           background: theme.headerBackground,
           borderBottom: `1px solid ${theme.borderColor}`,
           display: 'flex',
           alignItems: 'center',
           padding: '0 16px',
+          justifyContent: 'center',
         }}
       >
-        {/* Simple URL/Search bar */}
+        {/* iOS Safari URL bar */}
         <div
           style={{
-            flex: 1,
+            width: '90%',
             height: 32,
-            background: theme.background,
-            border: `1px solid ${theme.borderColor}`,
-            borderRadius: 16,
+            background: '#e9e9eb',
+            borderRadius: 8,
             display: 'flex',
             alignItems: 'center',
+            justifyContent: 'center',
             padding: '0 12px',
             fontSize: 14,
-            color: theme.textColor,
+            color: '#000',
+            fontWeight: 500,
           }}
         >
-          <span style={{ marginRight: 8 }}>🔍</span>
+          <span style={{ marginRight: 8, fontSize: 12 }}>🔒</span>
           <span
             style={{
-              flex: 1,
               overflow: 'hidden',
               textOverflow: 'ellipsis',
               whiteSpace: 'nowrap',
             }}
           >
-            {url}
+            {domainName}
           </span>
         </div>
       </div>
@@ -75,6 +94,25 @@ export const IOSSafariBrowser: React.FC<IOSSafariBrowserProps> = ({
       {/* Content */}
       <div style={{ flex: 1, background: theme.background }}>
         {children}
+      </div>
+
+      {/* Bottom toolbar */}
+      <div
+        style={{
+          height: 44,
+          background: theme.headerBackground,
+          borderTop: `1px solid ${theme.borderColor}`,
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'space-around',
+          padding: '0 16px',
+        }}
+      >
+        <div style={{ fontSize: 16 }}>◀</div>
+        <div style={{ fontSize: 16 }}>▶</div>
+        <div style={{ fontSize: 16 }}>□</div>
+        <div style={{ fontSize: 16 }}>⊕</div>
+        <div style={{ fontSize: 16 }}>≡</div>
       </div>
     </div>
   );

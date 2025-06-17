@@ -33,7 +33,7 @@ const BrowserDemo: React.FC = () => {
         <option value="ios-safari">iOS Safari (mobile)</option>
         <option value="android-chrome">Android Chrome (mobile)</option>
       </select>
-      <MockBrowser type={browser} style={{ marginTop: 10 }}>
+      <MockBrowser type={browser} style={{ paddingTop: 10 }}>
         <Demo steps={steps} autoPlay loop={false} />
       </MockBrowser>
     </div>

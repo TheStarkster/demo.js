@@ -13,21 +13,17 @@ export const BrowserShowcase: React.FC<BrowserShowcaseProps> = ({
     <button style={{ padding: '8px 16px', marginTop: 16 }}>Click me</button>
   </div>
 }) => {
-  const [selectedBrowser, setSelectedBrowser] = useState<BrowserType>('chrome');
+  const [selectedBrowser, setSelectedBrowser] = useState<BrowserType>('safari');
   const [customUrl, setCustomUrl] = useState('https://example.com');
 
   const browserTypes: BrowserType[] = [
-    'chrome',
     'safari', 
-    'firefox',
-    'edge',
-    'ios-safari',
-    'android-chrome'
+    'ios-safari'
   ];
 
   return (
     <div style={{ padding: 20, fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif' }}>
-      <h1 style={{ marginBottom: 30, textAlign: 'center' }}>Simplified Browser Mockups</h1>
+      <h1 style={{ marginBottom: 30, textAlign: 'center' }}>Safari Browser Mockups</h1>
       
       {/* Controls */}
       <div style={{ 
@@ -91,8 +87,8 @@ export const BrowserShowcase: React.FC<BrowserShowcaseProps> = ({
       <div style={{ marginTop: 40 }}>
         <h2>Features</h2>
         <ul style={{ lineHeight: 1.6 }}>
-          <li><strong>6 Browser Types:</strong> Chrome, Safari, Firefox, Edge, iOS Safari, Android Chrome</li>
-          <li><strong>Simple & Clean:</strong> Focused on essential visual elements that make each browser recognizable</li>
+          <li><strong>2 Browser Types:</strong> macOS Safari, iOS Safari</li>
+          <li><strong>Simple & Clean:</strong> Focused on essential visual elements that make Safari recognizable</li>
           <li><strong>Responsive:</strong> Automatic mobile vs desktop layout</li>
           <li><strong>Customizable URL:</strong> Show your own URL in the address bar</li>
           <li><strong>Lightweight:</strong> No complex configuration needed</li>
@@ -104,12 +100,7 @@ export const BrowserShowcase: React.FC<BrowserShowcaseProps> = ({
       <div style={{ marginTop: 40 }}>
         <h2>Usage Examples</h2>
         <div style={{ background: '#f8f9fa', padding: 20, borderRadius: 8, fontFamily: 'monospace' }}>
-          <pre>{`// Basic usage
-<MockBrowser type="chrome">
-  <YourContent />
-</MockBrowser>
-
-// With custom URL
+          <pre>{`// macOS Safari
 <MockBrowser 
   type="safari"
   url="https://yoursite.com"
@@ -117,7 +108,7 @@ export const BrowserShowcase: React.FC<BrowserShowcaseProps> = ({
   <YourWebsite />
 </MockBrowser>
 
-// Mobile browser
+// iOS Safari
 <MockBrowser
   type="ios-safari"
   url="https://app.com"

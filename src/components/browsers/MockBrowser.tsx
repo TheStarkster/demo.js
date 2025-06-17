@@ -2,14 +2,11 @@ import React from 'react';
 import { MockBrowserProps } from './types';
 import { defaultDimensions, isMobile, getBorderRadius, getHeaderHeight } from './utils';
 import { browserThemes } from './themes';
-import { ChromeBrowser } from './components/ChromeBrowser';
 import { SafariBrowser } from './components/SafariBrowser';
 import { IOSSafariBrowser } from './components/IOSSafariBrowser';
-import { FirefoxBrowser } from './components/FirefoxBrowser';
-import { EdgeBrowser } from './components/EdgeBrowser';
 
 export const MockBrowser: React.FC<MockBrowserProps> = ({
-  type = 'chrome',
+  type = 'safari',
   dimensions,
   style = {},
   className = '',
@@ -32,7 +29,6 @@ export const MockBrowser: React.FC<MockBrowserProps> = ({
     border: `1px solid ${theme.borderColor}`,
     borderRadius,
     overflow: 'hidden',
-    margin: isMobileBrowser ? '0 auto' : undefined,
     boxShadow: isMobileBrowser 
       ? '0 4px 20px rgba(0, 0, 0, 0.1)' 
       : '0 2px 10px rgba(0, 0, 0, 0.05)',
@@ -40,6 +36,15 @@ export const MockBrowser: React.FC<MockBrowserProps> = ({
     fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif',
     ...style,
   };
+
+  // Apply horizontal centering for mobile browsers only if no margin-related props in style
+  if (isMobileBrowser && 
+      !('margin' in style) && 
+      !('marginLeft' in style) && 
+      !('marginRight' in style)) {
+    containerStyle.marginLeft = 'auto';
+    containerStyle.marginRight = 'auto';
+  }
 
   // Render the appropriate browser component
   const renderBrowserContent = () => {
@@ -51,24 +56,14 @@ export const MockBrowser: React.FC<MockBrowserProps> = ({
     };
 
     switch (type) {
-      case 'chrome':
-      case 'android-chrome':
-        return <ChromeBrowser {...commonProps} />;
-
       case 'safari':
         return <SafariBrowser {...commonProps} />;
 
       case 'ios-safari':
         return <IOSSafariBrowser {...commonProps} />;
 
-      case 'firefox':
-        return <FirefoxBrowser {...commonProps} />;
-
-      case 'edge':
-        return <EdgeBrowser {...commonProps} />;
-
       default:
-        return <ChromeBrowser {...commonProps} />;
+        return <SafariBrowser {...commonProps} />;
     }
   };
 
